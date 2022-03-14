@@ -10,17 +10,25 @@ function Header() {
     // updates the state of text each time a change occurs to the input of the text input
     function handleChange(event) {
         setText(event.target.value);
+        console.log(text);
     }
 
     // when submit button clicked, current state of the text input is stored inside location constant 
     function handleClick() {
         setLocation(text);
-        console.log(location);
+        const geoCoderURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid=feab629ddad64dc21d6412ebae467d79"
+        function getCoordinates(url) {
+            axios.get(url).then((response) => {
+                const locationLat = response.data[0].lat;
+                const locationLon = response.data[0].lon;
+                console.log(locationLat, locationLon);
+            });
+        } 
+        getCoordinates(geoCoderURL);        
     }
 
     // api call to GeoCoder to get the longitute and latitude of the inputted city for the Open Weather API call 
-    const geoCoderURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=5&appid={9f1df3f8c943ccc898f91bfaede7760d}";
-    console.log(axios.get(geoCoderURL));
+    
 
     return (
         <div>
