@@ -1,0 +1,23 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: lightgray;
+    text-align: center;
+    height: 200px;
+    
+}
+
+.headerTitle {
+    margin-top: 0;
+    position: relative;
+    top: 60px;
+    padding-bottom: 50px;
+}
